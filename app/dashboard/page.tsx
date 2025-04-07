@@ -1,12 +1,16 @@
 import Image from "next/image";
 import DashboardLayout from "./layout";
-import VERCEL from "@/public/vercel.svg";
+import LOGO from "@/public/LOGO.png";
 import RoundedButton from "@/src/ui/rounded_button";
 import RoundedSearchBar from "@/src/ui/rounded_search_bar";
 import WelcomeCard from "@/src/ui/welcome_card";
 import OneDataCard from "@/src/ui/one_data_card";
 import PieChartCard from "@/src/ui/pie_chart_card";
 import BarChartCard from "@/src/ui/bar_chart_card";
+import { AccountBalanceRounded, Inventory, Logout, MonetizationOn, MonetizationOnOutlined, MoneyRounded, Notifications, Settings, Sms, TransferWithinAStation, TransformRounded } from "@mui/icons-material";
+import { PeopleAlt } from '@mui/icons-material';
+import { ShowChart } from '@mui/icons-material';
+import { Cloud } from '@mui/icons-material';
 
 export default function Dashboard() {
     return (
@@ -18,24 +22,38 @@ export default function Dashboard() {
                     className="flex flex-col w-fit justify-between items-center rounded-full">
 
                     {/* logo image */}
-                    <div className=" w-12 h-12 rounded-full">
+                    <div className=" w-12 h-12">
                         <Image
-                            src={VERCEL}
+                            src={LOGO}
                             alt="Logo"
-                            className="rounded-full" />
+                            objectFit="cover" />
                     </div>
 
                     <div
                         style={{ backgroundColor: "#141414", padding: "6px" }}
                         className="flex flex-col gap-4 rounded-full">
-                        <RoundedButton />
-                        <RoundedButton />
-                        <RoundedButton />
-                        <RoundedButton />
-                        <RoundedButton />
+                        <RoundedButton
+                            IconComponent={Inventory}
+                            tooltipText="Consulta todos los productos"
+                        />
+                        <RoundedButton IconComponent={PeopleAlt}
+                            tooltipText="Consulta todos los vendedores"
+                        />
+                        <RoundedButton IconComponent={ShowChart}
+                            tooltipText="Consulta los reportes generales"
+                        />
+                        <RoundedButton IconComponent={Cloud} 
+                            tooltipText="Carga y descarga información"	
+                        />
+                        <RoundedButton IconComponent={Settings} 
+                            tooltipText="Configura la aplicación"
+                        />
                     </div>
 
-                    <RoundedButton />
+                    <RoundedButton 
+                        IconComponent={Logout} 
+                        tooltipText="Cerrar sesión"
+                    />
 
                 </div>
 
@@ -51,17 +69,32 @@ export default function Dashboard() {
                         {/* rounded buttons */}
                         <div className="flex gap-4">
                             <RoundedSearchBar />
-                            <RoundedButton />
-                            <RoundedButton />
+                            <RoundedButton 
+                                IconComponent={Sms} 
+                                tooltipText="Mensajes directos"
+                                />
+                            <RoundedButton 
+                                IconComponent={Notifications} 
+                                tooltipText="Notificaciones del sistema"
+                            />
                         </div>
                     </div>
 
                     <div className="flex flex-col justify-between w-full h-full items-center gap-4">
                         {/* Grid 3 columnas */}
                         <div className="grid grid-cols-3 gap-4 w-full">
-                            <OneDataCard />
-                            <OneDataCard />
-                            <OneDataCard />
+                            <OneDataCard
+                                title="Entradas"
+                                buttonRounded={<RoundedButton IconComponent={AccountBalanceRounded} size={10}
+                                    tooltipText="Entradas en el mes pasado" />} />
+                            <OneDataCard
+                                title="Salidas"
+                                buttonRounded={<RoundedButton IconComponent={TransformRounded} size={10}
+                                    tooltipText="Salidas en el mes pasado" />} />
+                            <OneDataCard
+                                title="Productos"
+                                buttonRounded={<RoundedButton IconComponent={Inventory} size={10}
+                                    tooltipText="Cantidad de productos en el mes pasado" />} />
                         </div>
 
                         {/* Grid 2 columnas con ajuste especial */}

@@ -4,6 +4,7 @@ import RoundedButton from "./rounded_button";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useEffect, useRef } from 'react';
+import {PieChart} from '@mui/icons-material';
 
 // Registra los componentes necesarios de Chart.js
 ChartJS.register(
@@ -17,7 +18,7 @@ export default function PieChartCard() {
 
   // Datos de ejemplo para el gráfico
   const data = {
-    labels: ['Residencial', 'Comercial', 'Industrial', 'Terrenos'],
+    labels: ['Gravables', 'Exentos', 'Personal', 'Confiteria'],
     datasets: [
       {
         data: [45, 25, 20, 10],
@@ -41,7 +42,7 @@ export default function PieChartCard() {
       legend: {
         position: 'bottom' as const,
         labels: {
-          color: '#fff', // texto blanco para la leyenda
+          color: '#ffffff', // texto blanco para la leyenda
           font: {
             size: 12
           },
@@ -50,8 +51,8 @@ export default function PieChartCard() {
       },
       tooltip: {
         enabled: true,
-        bodyColor: '#000',
-        titleColor: '#000'
+        bodyColor: '#fff',
+        titleColor: '#fff'
       }
     },
   };
@@ -72,10 +73,9 @@ export default function PieChartCard() {
     >
       <div className="flex justify-between items-center w-full">
       <div className="flex gap-2 justify-center items-center">
-          <RoundedButton />
-          <h2 className="text-white font-medium">Property Distribution</h2>
+          <RoundedButton IconComponent={PieChart} />
+          <h2 className="text-white font-medium">Productos según departamento</h2>
         </div>
-        <RoundedButton />
       </div>
       
       <div className="w-full h-full"> {/* Contenedor para el gráfico */}

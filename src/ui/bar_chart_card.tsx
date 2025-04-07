@@ -4,6 +4,8 @@ import RoundedButton from "./rounded_button";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { useEffect, useRef } from 'react';
+import { AreaChart } from "@mui/icons-material";
+
 
 // Registra los componentes necesarios de Chart.js
 ChartJS.register(
@@ -20,17 +22,17 @@ export default function BarChartCard() {
   
   // Datos de ejemplo para el gráfico
   const data = {
-    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
     datasets: [
       {
-        label: 'Ventas',
+        label: 'Entradas',
         data: [12, 19, 3, 5, 2, 3],
         backgroundColor: 'rgba(99, 102, 241, 0.8)', // color morado
         borderRadius: 6,
         borderSkipped: false,
       },
       {
-        label: 'Alquileres',
+        label: 'Salidas',
         data: [8, 15, 7, 12, 9, 11],
         backgroundColor: 'rgba(16, 185, 129, 0.8)', // color verde
         borderRadius: 6,
@@ -86,8 +88,8 @@ export default function BarChartCard() {
     >
       <div className="flex justify-between items-center w-full">
         <div className="flex gap-2 justify-center items-center">
-          <RoundedButton />
-          <h2 className="text-white font-medium">Total Property</h2>
+          <RoundedButton IconComponent={AreaChart} />
+          <h2 className="text-white font-medium">Gráfico de entradas y salidas</h2>
         </div>
       </div>
       
